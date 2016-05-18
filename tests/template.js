@@ -28,3 +28,8 @@ Lapiz.Test("Template/NonStringResolve", function(t){
 
   fooFlag || t.error("Resolver did not correctly resolve function");
 });
+
+Lapiz.Test("Template/singleToken", function(t){
+  var out = Lapiz.Template.Std.templator("$b.name", {a:"apple", b:{name:"bannana"}});
+  out === "bannana" || t.error("Templator did not generate correct string");
+});
