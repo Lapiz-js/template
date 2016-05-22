@@ -13,6 +13,16 @@ Lapiz.Test("Template/Deep", function(t){
   out === "start apple bannana end" || t.error("Templator did not generate correct string");
 });
 
+Lapiz.Test("Template/Undefined", function(t){
+  var out = Lapiz.Template.Std.templator("start $foo.bar end", {a:"apple", b:{name:"bannana"}});
+  out === "start  end" || t.error("Templator did not generate correct string");
+});
+
+Lapiz.Test("Template/Self", function(t){
+  var out = Lapiz.Template.Std.templator("start $$ end", "testing");
+  out === "start testing end" || t.error("Templator did not generate correct string");
+});
+
 Lapiz.Test("Template/NonStringResolve", function(t){
   var fooFlag = false;
   var obj = {
